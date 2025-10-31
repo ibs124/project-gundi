@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gundi</title>
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/main.js"></script>
-</head>
+<head th:replace="~{fragments/head}"></head>
 
 <body>
     <div class="app">
-        <header class="app__header">
-            <p>Header</p>
-        </header>
-        <div class="app__sidebar">
-            <p>Sidebar</p>
-        </div>
-        <div class="app__workspace">
-            <main class="app__main">
-                <p>Main</p>
-            </main>
-            <footer class="app__footer">Footer</footer>
-        </div>
+        <header th:replace="~{fragments/header}"></header>
+        <div th:replace="~{fragments/sidebar}"></div>
+        <div th:replace="~{fragments/workspace}"></div>
     </div>
 </body>
 
