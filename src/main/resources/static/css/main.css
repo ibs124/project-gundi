@@ -27,6 +27,7 @@
     --header-height: 60px;
     --sidebar-width: 60px;
     --sidebar-width-expanded: 230px;
+    --padding: 0.5rem;
 
     height: 100vh;
     width: 100vw;
@@ -34,13 +35,31 @@
     background-color: var(--bg-dark-color);
     color: var(--text-color);
 
-    
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar workspace";
+    grid-template-rows: var(--header-height) 1fr;
+    grid-template-columns: var(--sidebar-width) 1fr;
 }
 
-.app__header {}
+.app__header {
+    grid-area: header;
+    overflow: hidden auto;
+    padding: var(--padding);
+}
+
+.app__sidebar {
+    grid-area: sidebar;
+    overflow: hidden auto;
+    padding: var(--padding);
+}
 
 .app__workspace {
-    background-color: var(--bg-dark-color);
+    grid-area: workspace;
+    overflow: hidden auto;
+    padding: var(--padding);
+    background-color: var(--bg-color);
     color: var(--text-muted-color);
 }
 
