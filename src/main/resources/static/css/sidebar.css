@@ -4,3 +4,35 @@
     flex-direction: column;
     gap: 1rem;
 }
+
+.sidebar__detail {
+    display: none;
+}
+
+.sidebar__auth-guest-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar--expanded .sidebar__detail {
+    display: unset;
+}
+
+.sidebar--expanded .sidebar__auth-guest-menu {
+    flex-direction: row;
+}
+
+@media (min-width: 292px) {
+    .sidebar--collapsed:hover .sidebar__detail {
+        display: unset;
+    }
+
+    .sidebar--collapsed:hover .sidebar__dropdown-content {
+        font-size: 0.95rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .sidebar--collapsed:hover .sidebar__auth-guest-menu {
+        flex-direction: row;
+    }
+}

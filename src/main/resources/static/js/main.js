@@ -6,15 +6,37 @@ main();
 
 function main() {
     injectIcons();
+
+    window.addEventListener("DOMContentLoaded", () => {
+        updateSidebar(document.querySelector(APP));
+    });
+
     setSidebarToggleBtn();
 }
 
 function setSidebarToggleBtn() {
-    const app = document.querySelector(APP);
     const buttons = document.querySelectorAll(".app__sidebar-toggle");
+    const app = document.querySelector(APP);
 
-    buttons.forEach(btn =>
-        btn.addEventListener(CLICK, () => app.classList.toggle(APP_SIDEBAR_EXPANDED)));
+    buttons.forEach(btn => btn.addEventListener(CLICK, () => {
+        app.classList.toggle(APP_SIDEBAR_EXPANDED);
+        updateSidebar(app);
+    }))
+}
+
+function updateSidebar(app) {
+    const classes = document.querySelector(".sidebar").classList;
+    const collapsed = "sidebar--collapsed";
+    const expanded = "sidebar--expanded";
+
+    if (app.classList.contains(APP_SIDEBAR_EXPANDED)) {
+        classes.add(expanded);
+        classes.remove(collapsed);
+        return;
+    }
+
+    classes.add(collapsed);
+    classes.remove(expanded);
 }
 
 function injectIcons() {
