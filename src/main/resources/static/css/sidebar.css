@@ -18,6 +18,11 @@
     display: unset;
 }
 
+.sidebar--expanded .sidebar__dropdown-content {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.5rem;
+}
+
 .sidebar--expanded .sidebar__auth-guest-menu {
     flex-direction: row;
 }
