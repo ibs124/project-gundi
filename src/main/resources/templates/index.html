@@ -1,14 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/app :: app(title='Home', content=~{::content})}">
 
-<head th:replace="~{fragments/head::head(title='Gundi - Home')}"></head>
-
-<body>
-    <div class="app app--dark-mode">
-        <header th:replace="~{fragments/header :: header}"></header>
-        <div th:replace="~{fragments/sidebar :: sidebar}"></div>
-        <div th:replace="~{fragments/workspace :: workspace}"></div>
-    </div>
-</body>
+<section class="index-class" th:fragment="content">
+    <p>Index page content</p>
+</section>
 
 </html>
