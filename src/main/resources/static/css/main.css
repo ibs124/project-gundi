@@ -49,10 +49,6 @@
     grid-template-columns: var(--sidebar-width) 1fr;
 }
 
-.app--sidebar-expanded {
-    --sidebar-width: var(--sidebar-expanded-width);
-}
-
 .app__header {
     grid-area: header;
     overflow: hidden auto;
@@ -65,10 +61,6 @@
     padding: var(--padding);
     z-index: 10;
     transition: width .5s;
-}
-
-.app__sidebar:hover {
-    width: var(--sidebar-expanded-width);
 }
 
 .app__workspace {
@@ -101,4 +93,22 @@
 .app--dark-mode .app__dark-mode-indicator {
     transform: rotate(180deg);
     color: var(--primary-color);
+}
+
+@media (min-width: 292px) {
+    .app__sidebar:hover {
+        width: var(--sidebar-width-expanded);
+    }
+}
+
+@media (min-width: 712px) {
+    .app--sidebar-expanded {
+        --sidebar-width: var(--sidebar-width-expanded);
+    }
+}
+
+@media (max-width: 712px) {
+    .app--sidebar-expanded .app__sidebar {
+        width: var(--sidebar-width-expanded);
+    }
 }
