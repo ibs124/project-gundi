@@ -42,7 +42,7 @@
 }
 
 .btn--logo {
-    color: var(--primary-color);
+    color: var(---primary-color);
 }
 
 .btn--logo:hover {
@@ -100,4 +100,19 @@
 .dropdown--active>.dropdown__btn>.dropdown__indicator,
 .dropdown--hover:hover>.dropdown__btn>.dropdown__indicator {
     transform: rotate(90deg);
+}
+
+.search {
+    padding: 0.1rem 0.5rem;
+    border: solid 1px var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.search__item {
+    border: none;
+    outline: none;
+    background: none;
 }
