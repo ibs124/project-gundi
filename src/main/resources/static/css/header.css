@@ -13,3 +13,57 @@
     flex: 1;
     justify-content: center;
 }
+
+.header__search {
+    display: flex;
+    align-items: center;
+}
+
+.header__search-toggle {
+    display: none;
+}
+
+@media(max-width: 498px) {
+
+    .header__group--center {
+        justify-content: end;
+    }
+
+    .header--search-expanded {
+        width: 100%;
+    }
+
+    .header__search-toggle {
+        display: unset;
+    }
+
+    .header__search-collapse-icon {
+        display: none;
+    }
+
+    .header--search-expanded .header__search-collapse-icon {
+        display: unset;
+    }
+
+    .header--search-expanded .header__search-expand-icon {
+        display: none;
+    }
+
+    .header__search-form {
+        display: none;
+    }
+
+    .header--search-expanded .header__main {
+        display: none;
+    }
+
+    .header--search-expanded .header__search-form {
+        display: unset;
+    }
+}
+
+@media (max-width: 372px) {
+    .header {
+        font-size: 0.95rem;
+    }
+}
