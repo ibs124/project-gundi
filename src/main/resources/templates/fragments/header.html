@@ -15,20 +15,30 @@
             <span class="btn__label">Gundi</span>
         </a>
     </div>
-    <div class="header__group header__group--center">
-        <form class="search" action="">
-            <input class="search__item" type="text" placeholder="Search...">
-            <select class="search__item btn" name="type">
-                <option value="users">Users</option>
-                <option value="games">Games</option>
-                <option value="fields">Fields</option>
-            </select>
-            <button class="search__item btn" type="submit">
-                <svg class="btn__icon icon">
-                    <use href="#search"></use>
-                </svg>
-            </button>
-        </form>
+    <div class="header__search header__group header__group--center">
+        <button class="header__search-toggle btn">
+            <svg class="header__search-expand-icon btn__icon icon">
+                <use href="#search"></use>
+            </svg>
+            <svg class="header__search-collapse-icon btn__icon icon">
+                <use href="#back-long"></use>
+            </svg>
+        </button>
+        <div class="header__search-form">
+            <form class="search" action="">
+                <input class="search__item" type="text" placeholder="Search...">
+                <select class="search__item btn" name="type">
+                    <option value="users">Users</option>
+                    <option value="games">Games</option>
+                    <option value="fields">Fields</option>
+                </select>
+                <button class="search__item btn" type="submit">
+                    <svg class="btn__icon icon">
+                        <use href="#search"></use>
+                    </svg>
+                </button>
+            </form>
+        </div>
     </div>
 </header>
 

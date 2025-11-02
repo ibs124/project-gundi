@@ -14,6 +14,8 @@ function main() {
     setDropdownButtons();
 
     setClassToggleButtonFor("app--dark-mode", APP, ".app__dark-mode-toggle");
+
+    setClassToggleButtonFor("header--search-expanded", ".header", ".header__search-toggle");
 }
 
 function setDOMContentLoadedEventListener() {
