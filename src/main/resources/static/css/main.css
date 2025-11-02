@@ -97,19 +97,19 @@
 
 @media (min-width: 292px) {
     .app__sidebar:hover {
-        width: var(--sidebar-width-expanded);
+        width: var(--sidebar-expanded-width);
     }
 }
 
 @media (min-width: 712px) {
     .app--sidebar-expanded {
-        --sidebar-width: var(--sidebar-width-expanded);
+        --sidebar-width: var(--sidebar-expanded-width);
     }
 }
 
 @media (max-width: 712px) {
     .app--sidebar-expanded .app__sidebar {
-        width: var(--sidebar-width-expanded);
+        width: var(--sidebar-expanded-width);
     }
 }
 
