@@ -46,3 +46,36 @@
 .list__item {
     width: 100%;
 }
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown__content {
+    display: none;
+}
+
+.dropdown__content--indent {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.5rem;
+}
+
+.dropdown--fancy .dropdown__content {
+    border-left: 1px solid var(--primary-color);
+}
+
+.dropdown--active>.dropdown__content,
+.dropdown--hover:hover>.dropdown__content {
+    display: unset;
+}
+
+.dropdown--active>.dropdown__btn,
+.dropdown--hover:hover>.dropdown__btn {
+    color: var(--primary-color);
+}
+
+.dropdown--active>.dropdown__btn>.dropdown__indicator,
+.dropdown--hover:hover>.dropdown__btn>.dropdown__indicator {
+    transform: rotate(90deg);
+}
