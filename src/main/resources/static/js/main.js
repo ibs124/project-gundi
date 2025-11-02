@@ -7,13 +7,17 @@ main();
 function main() {
     injectIcons();
 
-    window.addEventListener("DOMContentLoaded", () => {
-        updateSidebar(document.querySelector(APP));
-    });
+    setDOMContentLoadedEventListener()
 
     setSidebarToggleBtn();
 
     setDropdownButtons();
+}
+
+function setDOMContentLoadedEventListener() {
+    window.addEventListener("DOMContentLoaded", () => {
+        updateSidebar(document.querySelector(APP));
+    });
 }
 
 function setDropdownButtons() {
