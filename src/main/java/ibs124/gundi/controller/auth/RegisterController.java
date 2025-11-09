@@ -40,10 +40,14 @@ public class RegisterController extends AbstractController {
             redirectAttributes
                     .addFlashAttribute(BINDING_MODEL, bindingModel)
                     .addFlashAttribute(BINDING_RESULT, bindingResult);
-            return super.redirect(Routes.REGISTER);
+            return super.getRedirectUrl(Routes.REGISTER);
         }
 
-        return super.redirect(Routes.REGISTER + "-success");
+        return super.getRedirectUrl(Routes.REGISTER + Routes.SUCCESS);
     }
 
+    @GetMapping(Routes.SUCCESS)
+    public String registerSuccess() {
+        return Templates.REGISTER + "-success";
+    }
 }
