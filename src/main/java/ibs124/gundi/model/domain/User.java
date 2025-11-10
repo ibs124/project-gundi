@@ -1,14 +1,20 @@
 package ibs124.gundi.model.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
+@Table(name = "users")
 public class User extends AbstractAuditableDomainModel {
 
-    private Set<UserRole> roles;
+    private Set<UserRole> roles = new HashSet<>();
     private String username;
     private String password;
     private String fullName;
@@ -18,7 +24,20 @@ public class User extends AbstractAuditableDomainModel {
         super();
     }
 
+    @Transient
+    UserRole removeRole(UserRole role) {
+        this.getRoles().remove(role);
+        return role;
+    }
+
+    @Transient
+    UserRole addRole(UserRole role) {
+        this.getRoles().add(role);
+        return role;
+    }
+
     @ManyToMany
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<UserRole> getRoles() {
         return roles;
     }
