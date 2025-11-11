@@ -16,6 +16,10 @@ public class UserRole extends AbstractAuditableDomainModel {
         super();
     }
 
+    public UserRole(UserRoleType x) {
+        //TODO Auto-generated constructor stub
+    }
+
     @Enumerated(EnumType.STRING)
     public UserRoleType getType() {
         return type;
