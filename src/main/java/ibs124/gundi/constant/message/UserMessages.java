@@ -3,7 +3,12 @@ package ibs124.gundi.constant.message;
 public abstract class UserMessages {
 
     private static final String BLANK = "must not be blank!";
+    private static final String EMAIL = "Email ";
     private static final String USERNAME = "Username ";
+
+    public static final String EMAIL_BLANK = EMAIL + BLANK;
+    
+    public static final String EMAIL_ERROR = "Invalid email address!";
 
     public static final String USERNAME_BLANK = USERNAME + BLANK;
 
@@ -14,4 +19,5 @@ public abstract class UserMessages {
                 - Digits (0 - 9)
                 - Underscores (_)
                 """;
+
 }

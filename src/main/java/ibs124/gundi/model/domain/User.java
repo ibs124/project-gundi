@@ -3,6 +3,7 @@ package ibs124.gundi.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import ibs124.gundi.validation.constraint.ValidEmail;
 import ibs124.gundi.validation.constraint.ValidUsername;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,10 +18,10 @@ import jakarta.persistence.Transient;
 public class User extends AbstractAuditableDomainModel {
 
     private Set<UserRole> roles = new HashSet<>();
-    private String username;
+    private String email;
     private String password;
     private String fullName;
-    private String email;
+    private String username;
 
     public User() {
         super();
@@ -48,14 +49,14 @@ public class User extends AbstractAuditableDomainModel {
         this.roles = roles;
     }
 
-    @ValidUsername
+    @ValidEmail
     @Column(nullable = false, unique = true)
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -74,12 +75,14 @@ public class User extends AbstractAuditableDomainModel {
         this.fullName = fullName;
     }
 
-    public String getEmail() {
-        return email;
+    @ValidUsername
+    @Column(nullable = false, unique = true)
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 }
