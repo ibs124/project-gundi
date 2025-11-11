@@ -9,7 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ibs124.gundi.constant.Routes;
-import ibs124.gundi.constant.Templates;
+import ibs124.gundi.constant.thymeleaf.Templates;
 import ibs124.gundi.controller.AbstractController;
 import ibs124.gundi.model.api.RegisterApiRequest;
 import org.springframework.web.bind.annotation.PostMapping;
