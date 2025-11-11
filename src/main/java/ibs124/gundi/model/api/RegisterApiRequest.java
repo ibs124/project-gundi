@@ -1,8 +1,10 @@
 package ibs124.gundi.model.api;
 
+import ibs124.gundi.validation.constraint.ValidUsername;
+
 public record RegisterApiRequest(
         String email,
         String password,
         String fullName,
-        String username) {
+        @ValidUsername String username) {
 }

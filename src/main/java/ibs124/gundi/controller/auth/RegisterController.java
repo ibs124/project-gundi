@@ -12,6 +12,8 @@ import ibs124.gundi.constant.Routes;
 import ibs124.gundi.constant.thymeleaf.Templates;
 import ibs124.gundi.controller.AbstractController;
 import ibs124.gundi.model.api.RegisterApiRequest;
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,7 +34,7 @@ public class RegisterController extends AbstractController {
 
     @PostMapping
     public String registerPost(
-            RegisterApiRequest bindingModel,
+            @Valid RegisterApiRequest bindingModel,
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 

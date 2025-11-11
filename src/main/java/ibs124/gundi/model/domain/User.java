@@ -3,6 +3,8 @@ package ibs124.gundi.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import ibs124.gundi.validation.constraint.ValidUsername;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -46,6 +48,8 @@ public class User extends AbstractAuditableDomainModel {
         this.roles = roles;
     }
 
+    @ValidUsername
+    @Column(nullable = false, unique = true)
     public String getUsername() {
         return username;
     }
