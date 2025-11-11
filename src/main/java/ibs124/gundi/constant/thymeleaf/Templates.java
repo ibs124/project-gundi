@@ -2,9 +2,11 @@ package ibs124.gundi.constant.thymeleaf;
 
 public class Templates {
 
+    private static final String USERS = "/users";
+
     public static final String INDEX = "index";
 
-    private static final String AUTH = "/auth";
-    public static final String REGISTER = AUTH + "/register";
+    public static final String REGISTER = USERS + "/register";
+
     public static final String REGISTER_SUCCESS = REGISTER + "-success";
 }

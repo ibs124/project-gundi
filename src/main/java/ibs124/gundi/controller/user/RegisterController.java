@@ -1,4 +1,4 @@
-package ibs124.gundi.controller.auth;
+package ibs124.gundi.controller.user;
 
 import static ibs124.gundi.constant.thymeleaf.Attributes.BINDING_MODEL;
 import static ibs124.gundi.constant.thymeleaf.Attributes.BINDING_RESULT;
@@ -50,6 +50,6 @@ public class RegisterController extends AbstractController {
 
     @GetMapping(Routes.SUCCESS)
     public String registerSuccess() {
-        return Templates.REGISTER + "-success";
+        return Templates.REGISTER_SUCCESS;
     }
 }
