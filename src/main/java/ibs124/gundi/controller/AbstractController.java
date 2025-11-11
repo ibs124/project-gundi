@@ -1,18 +1,19 @@
 package ibs124.gundi.controller;
 
 public abstract class AbstractController {
-    private static final String REDIRECT = "redirect:";
-    private static final String FORWARD = "forward:";
+
+    private final String redirect = "redirect:";
+    private final String forward = "forward:";
 
     protected String getRedirectUrl(String route) {
-        return REDIRECT + route;
+        return redirect + route;
     }
 
     protected String getRedirectUrlHere(String route) {
-        return route == null || route.length() < 1 ? REDIRECT : REDIRECT + route.substring(1);
+        return route == null || route.length() < 1 ? redirect : redirect + route.substring(1);
     }
 
     protected String getForwardUrl(String route) {
-        return FORWARD + route;
+        return forward + route;
     }
 }
