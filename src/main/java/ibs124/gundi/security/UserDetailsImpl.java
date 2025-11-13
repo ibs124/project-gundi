@@ -11,14 +11,15 @@ public class UserDetailsImpl implements UserDetails, CredentialsContainer {
 
     private Collection<? extends GrantedAuthority> authorities;
     private String username;
-    private String passowrd;
+    private String password;
     private String email;
     private Instant createdAt;
     private Instant updatedAt;
+    private Long id;
 
     @Override
     public void eraseCredentials() {
-        this.setPassowrd(null);
+        this.setPassword(null);
     }
 
     @Override
@@ -41,15 +42,11 @@ public class UserDetailsImpl implements UserDetails, CredentialsContainer {
 
     @Override
     public String getPassword() {
-        return this.passowrd;
+        return this.password;
     }
 
-    public String getPassowrd() {
-        return passowrd;
-    }
-
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setPassword(String passowrd) {
+        this.password = passowrd;
     }
 
     public String getEmail() {
@@ -74,5 +71,13 @@ public class UserDetailsImpl implements UserDetails, CredentialsContainer {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
