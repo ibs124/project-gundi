@@ -6,6 +6,8 @@ import ibs124.gundi.config.RouteConfig;
 
 public abstract class AttributeConfig {
 
+    public static final String EMAIL = "email";
+
     public static final String SUCCESS = "success";
 
     public static final String VIEW_MODEL = "viewModel";

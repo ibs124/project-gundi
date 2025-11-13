@@ -29,7 +29,7 @@ public abstract class RouteConfig {
     public static final String USERS = INDEX + "users";
 
     static final String[] GUEST_ROUTES_GROUP = {
-            INDEX, REGISTER, REGISTER_SUCCESS, LOGIN, LOGOUT,
+            INDEX, REGISTER, REGISTER_SUCCESS, LOGIN, LOGIN_ERROR, LOGOUT,
     };
 
     static final String[] USER_ROUTES_GROUP = {
@@ -40,5 +40,4 @@ public abstract class RouteConfig {
 
     static final String[] ROOT_ROUTES_GROUP = {
     };
-
 }

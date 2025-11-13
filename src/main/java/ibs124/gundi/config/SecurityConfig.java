@@ -9,7 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import ibs124.gundi.config.thymeleaf.TemplateConfig;
 import ibs124.gundi.model.enumm.UserRoleType;
 
 @EnableWebSecurity
@@ -40,7 +39,7 @@ class SecurityConfig {
                         .anyRequest().authenticated())
 
                 .formLogin(x -> x
-                        .loginPage(TemplateConfig.LOGIN)
+                        .loginPage(RouteConfig.LOGIN)
                         .defaultSuccessUrl(RouteConfig.INDEX)
                         .failureForwardUrl(RouteConfig.LOGIN_ERROR))
 
