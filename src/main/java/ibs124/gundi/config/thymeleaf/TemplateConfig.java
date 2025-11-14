@@ -12,4 +12,6 @@ public class TemplateConfig {
 
     public static final String LOGIN = USERS + "/login";
 
+    public static final String USERS_ME = USERS + "/me";
+
 }

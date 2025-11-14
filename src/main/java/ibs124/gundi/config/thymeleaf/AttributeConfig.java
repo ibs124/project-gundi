@@ -1,8 +1,8 @@
 package ibs124.gundi.config.thymeleaf;
 
-import java.util.Map;
+import static ibs124.gundi.config.RouteConfig.*;
 
-import ibs124.gundi.config.RouteConfig;
+import java.util.Map;
 
 public abstract class AttributeConfig {
 
@@ -22,8 +22,9 @@ public abstract class AttributeConfig {
     public static final String ROUTES = "routes";
 
     public static final Map<String, String> ROUTES_MAP = Map.of(
-            "index", RouteConfig.INDEX,
-            "register", RouteConfig.REGISTER,
-            "login", RouteConfig.LOGIN,
-            "logout", RouteConfig.LOGOUT);
+            "index", INDEX,
+            "register", REGISTER,
+            "login", LOGIN,
+            "logout", LOGOUT,
+            "me", USERS_ME);
 }

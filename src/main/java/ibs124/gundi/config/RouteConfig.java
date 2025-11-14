@@ -26,6 +26,8 @@ public abstract class RouteConfig {
 
     public static final String USERS = INDEX + "users";
 
+    public static final String USERS_ME = USERS + "/me";
+
     public static final String ADMINS = INDEX + "admins";
 
     public static final String ROOT = INDEX + "root";
