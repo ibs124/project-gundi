@@ -237,7 +237,7 @@
         </ul>
     </nav>
     <div class="sidebar__auth-menu">
-        <div class="sidebar__auth-guest-menu">
+        <div class="sidebar__auth-guest-menu" sec:authorize="!isAuthenticated()">
             <a class="btn" th:href="@{${routes.login}}">
                 <svg class="btn__icon icon">
                     <use href="#sign-in"></use>
@@ -251,7 +251,7 @@
                 <span class="btn__label sidebar__detail">Sign Up</span>
             </a>
         </div>
-        <a class="btn" th:href="@{${routes.logout}}">
+        <a class="btn" th:href="@{${routes.logout}}" sec:authorize="isAuthenticated()">
             <svg class="btn__icon icon">
                 <use href="#sign-out"></use>
             </svg>
