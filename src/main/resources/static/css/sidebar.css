@@ -14,6 +14,10 @@
     flex-direction: column;
 }
 
+.sidebar__logout-form {
+    width: 100%;
+}
+
 .sidebar--expanded .sidebar__detail {
     display: unset;
 }

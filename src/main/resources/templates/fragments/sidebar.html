@@ -251,12 +251,15 @@
                 <span class="btn__label sidebar__detail">Sign Up</span>
             </a>
         </div>
-        <a class="btn" th:href="@{${routes.logout}}" sec:authorize="isAuthenticated()">
-            <svg class="btn__icon icon">
-                <use href="#sign-out"></use>
-            </svg>
-            <span class="btn__label sidebar__detail">Sign Out</span>
-        </a>
+        <form sec:authorize="isAuthenticated()" th:action="@{${routes.logout}}" method="post"
+            class="sidebar__logout-form">
+            <button class="btn" type="submit">
+                <svg class="btn__icon icon">
+                    <use href="#sign-out"></use>
+                </svg>
+                <span class="btn__label sidebar__detail">Sign Out</span>
+            </button>
+        </form>
     </div>
 </div>
 
