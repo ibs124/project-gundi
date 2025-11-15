@@ -7,13 +7,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import ibs124.gundi.config.message.ErrorMessageConfig;
+import ibs124.gundi.validation.validator.UniqueUsernameValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
 @Target({ ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Constraint(validatedBy = {})
+@Constraint(validatedBy = { UniqueUsernameValidator.class })
 public @interface UniqueUsername {
 
     String message() default ErrorMessageConfig.USERNAME_TAKEN;
