@@ -31,4 +31,9 @@ class UserReadingServiceImpl implements UserReadingService {
         return this.userRepository.existsByUsername(username);
     }
 
+    @Override
+    public boolean existsByEmail(String value) {
+        return this.userRepository.existsByEmail(value);
+    }
+
 }

@@ -6,6 +6,8 @@ public abstract class ErrorMessageConfig {
 
     public static final String EMAIL = "Invalid email address.";
 
+    public static final String EMAIL_TAKEN = "Email already taken.";
+
     public static final String PASSWORD = "Password must be at least 6 characters long.";
 
     public static final String USERNAME = """
