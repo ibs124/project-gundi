@@ -22,7 +22,7 @@ INSERT INTO users (id,username,email,full_name,password) VALUES
 (19,'drogo','khal.drogo@example.com','Khal Drogo','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K'),
 (20,'missandei','missandei@example.com','Missandei','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K');
 
-INSERT INTO users_roles(user_id,role_id) VALUES 
+INSERT INTO users_roles_map(user_id,role_id) VALUES 
 (1,1),(1,2),(1,3),(2,2),(2,3),(3,2),(3,3),(4,2),(4,3),(5,3),(6,3),(7,3),(8,3),(9,3),
 (10,3),(11,3),(12,3),(13,3),(14,3),(15,3),(16,3),(17,3),(18,3),(19,3),(20,3);
 
@@ -48,7 +48,7 @@ INSERT INTO users (id,username,email,full_name,password) VALUES
 (39,'garlan','garlan.tyrell@example.com','Garlan Tyrell','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K'),
 (40,'margaery','margaery.tyrell@example.com','Margaery Tyrell','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K');
 
-INSERT INTO users_roles (user_id,role_id) VALUES
+INSERT INTO users_roles_map (user_id,role_id) VALUES
 (21,3),(22,3),(23,3),(24,3),(25,3),(26,3),(27,3),(28,3),(29,3),(30,3),
 (31,3),(32,3),(33,3),(34,3),(35,3),(36,3),(37,3),(38,3),(39,3),(40,3);
 
@@ -74,7 +74,7 @@ INSERT INTO users (id,username,email,full_name,password) VALUES
 (59,'sam2','sam2.tarly@example.com','Samwell Tarly II','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K'),
 (60,'shae','shae@example.com','Shae','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K');
 
-INSERT INTO users_roles (user_id,role_id) VALUES
+INSERT INTO users_roles_map (user_id,role_id) VALUES
 (41,3),(42,3),(43,3),(44,3),(45,3),(46,3),(47,3),(48,3),(49,3),(50,3),
 (51,3),(52,3),(53,3),(54,3),(55,3),(56,3),(57,3),(58,3),(59,3),(60,3);
 
@@ -100,7 +100,7 @@ INSERT INTO users (id,username,email,full_name,password) VALUES
 (79,'loras2','loras2.tyrell@example.com','Loras Tyrell II','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K'),
 (80,'meera2','meera2.reed@example.com','Meera Reed II','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K');
 
-INSERT INTO users_roles (user_id,role_id) VALUES
+INSERT INTO users_roles_map (user_id,role_id) VALUES
 (61,3),(62,3),(63,3),(64,3),(65,3),(66,3),(67,3),(68,3),(69,3),(70,3),
 (71,3),(72,3),(73,3),(74,3),(75,3),(76,3),(77,3),(78,3),(79,3),(80,3);
 
@@ -126,6 +126,6 @@ INSERT INTO users (id,username,email,full_name,password) VALUES
 (99,'ellaria2','ellaria2.sand@example.com','Ellaria Sand II','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K'),
 (100,'arya','arya.stark@example.com','Arya Stark','$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K');
 
-INSERT INTO users_roles (user_id,role_id) VALUES
+INSERT INTO users_roles_map (user_id,role_id) VALUES
 (81,3),(82,3),(83,3),(84,3),(85,3),(86,3),(87,3),(88,3),(89,3),(90,3),
 (91,3),(92,3),(93,3),(94,3),(95,3),(96,3),(97,3),(98,3),(99,3),(100,3);
