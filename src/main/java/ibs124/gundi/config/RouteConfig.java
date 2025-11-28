@@ -1,6 +1,11 @@
 package ibs124.gundi.config;
 
 public abstract class RouteConfig {
+    public static final String REDIRECT_FORMAT = "redirect:";
+
+    public static final String FORWARD_FORMAT = "forward:";
+
+    public static final String CONTEXT_URL_FORMAT = "%s://%s:%d%s";
 
     public static final String CREATE = "/create";
 
