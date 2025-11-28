@@ -7,6 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user_verification_tokens")
@@ -20,6 +24,7 @@ public class VerificationToken extends AbstractDomainModel {
         super();
     }
 
+    @Valid
     @OneToOne(optional = false)
     @MapsId
     public User getUser() {
@@ -30,6 +35,7 @@ public class VerificationToken extends AbstractDomainModel {
         this.user = user;
     }
 
+    @NotBlank
     @Column(nullable = false, unique = true)
     public String getValue() {
         return value;
@@ -39,6 +45,8 @@ public class VerificationToken extends AbstractDomainModel {
         this.value = value;
     }
 
+    @Future
+    @NotNull
     @Column(nullable = false)
     public Instant getExpiresAt() {
         return expiresAt;
