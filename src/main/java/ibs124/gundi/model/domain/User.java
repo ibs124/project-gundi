@@ -24,6 +24,7 @@ public class User extends AbstractAuditableDomainModel {
     private String password;
     private String email;
     private String fullName;
+    private boolean enabled;
 
     public User() {
         super();
@@ -87,6 +88,15 @@ public class User extends AbstractAuditableDomainModel {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Column(columnDefinition = "BOOLEAN DEFAULT FALSE")
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
 }
