@@ -10,13 +10,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "user_verification_tokens")
-public class UserVerificationToken extends AbstractDomainModel {
+public class VerificationToken extends AbstractDomainModel {
 
     private User user;
     private String value;
     private Instant expiresAt;
 
-    public UserVerificationToken() {
+    public VerificationToken() {
         super();
     }
 

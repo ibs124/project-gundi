@@ -5,13 +5,13 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ibs124.gundi.model.domain.UserVerificationToken;
+import ibs124.gundi.model.domain.VerificationToken;
 
 @Repository
-public interface UserVerificationTokenRepository
-        extends JpaRepository<UserVerificationToken, Long> {
+public interface VerificationTokenRepository
+        extends JpaRepository<VerificationToken, Long> {
 
-    Optional<UserVerificationToken> findByUserId(long id);
+    Optional<VerificationToken> findByUserId(long id);
 
     boolean existsByValue(String value);
 
