@@ -52,11 +52,11 @@ public class Email extends AbstractAuditableDomainModel {
     }
 
     @Column(name = "is_primary", nullable = false, columnDefinition = JpaPropertiesConfig.COLUMN_BOOLEAN)
-    public boolean isPrimary() {
+    public boolean getIsPrimary() {
         return isPrimary;
     }
 
-    public void setPrimary(boolean primary) {
+    public void setIsPrimary(boolean primary) {
         this.isPrimary = primary;
     }
 

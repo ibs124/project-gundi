@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import ibs124.gundi.config.JpaPropertiesConfig;
-import ibs124.gundi.validation.constraint.ValidEmail;
 import ibs124.gundi.validation.constraint.ValidPassword;
 import ibs124.gundi.validation.constraint.ValidUsername;
 import jakarta.persistence.Column;
@@ -23,7 +22,6 @@ public class User extends AbstractAuditableDomainModel {
     private Set<UserRole> roles = new HashSet<>();
     private String username;
     private String password;
-    private String email;
     private String fullName;
     private boolean enabled;
 
@@ -51,16 +49,6 @@ public class User extends AbstractAuditableDomainModel {
 
     public void setRoles(Set<UserRole> roles) {
         this.roles = roles;
-    }
-
-    @ValidEmail
-    @Column(nullable = false, unique = true)
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     @ValidPassword
