@@ -1,4 +1,4 @@
-package ibs124.gundi.service.user;
+package ibs124.gundi.service.auth;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;

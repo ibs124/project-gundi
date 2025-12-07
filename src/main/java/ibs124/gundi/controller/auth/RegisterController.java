@@ -1,4 +1,4 @@
-package ibs124.gundi.controller.user;
+package ibs124.gundi.controller.auth;
 
 import static ibs124.gundi.config.RouteConfig.REGISTER;
 import static ibs124.gundi.config.RouteConfig.SUCCESS;
@@ -17,7 +17,7 @@ import ibs124.gundi.event.UserVerificationEvent;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.api.RegisterRequest;
 import ibs124.gundi.model.dto.RegisterResponseDto;
-import ibs124.gundi.service.user.RegisterService;
+import ibs124.gundi.service.auth.RegisterService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 

@@ -1,4 +1,4 @@
-package ibs124.gundi.controller.user;
+package ibs124.gundi.controller.auth;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -2,7 +2,7 @@ package ibs124.gundi.validation.validator;
 
 import org.springframework.stereotype.Component;
 
-import ibs124.gundi.service.user.UserReadingService;
+import ibs124.gundi.service.auth.UserReadingService;
 import ibs124.gundi.validation.constraint.UniqueUsername;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
