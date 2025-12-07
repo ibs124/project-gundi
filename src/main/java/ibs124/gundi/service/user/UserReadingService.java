@@ -4,6 +4,4 @@ public interface UserReadingService {
 
     boolean existsByUsername(String username);
 
-    boolean existsByEmail(String value);
-
 }
