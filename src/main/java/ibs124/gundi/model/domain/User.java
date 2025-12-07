@@ -91,7 +91,7 @@ public class User extends AbstractAuditableDomainModel {
         this.username = username;
     }
 
-    @Column(columnDefinition = JpaPropertiesConfig.COLUMN_BOOLEAN)
+    @Column(nullable = false, columnDefinition = JpaPropertiesConfig.COLUMN_BOOLEAN)
     public boolean isEnabled() {
         return enabled;
     }
