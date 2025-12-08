@@ -17,7 +17,7 @@ public class Email extends AbstractAuditableDomainModel {
     private User user;
     private String name;
     private Instant verifiedAt;
-    private boolean isPrimary;
+    private boolean primary;
 
     public Email() {
         super();
@@ -52,12 +52,12 @@ public class Email extends AbstractAuditableDomainModel {
     }
 
     @Column(name = "is_primary", nullable = false, columnDefinition = JpaPropertiesConfig.COLUMN_BOOLEAN)
-    public boolean getIsPrimary() {
-        return isPrimary;
+    public boolean isPrimary() {
+        return primary;
     }
 
-    public void setIsPrimary(boolean primary) {
-        this.isPrimary = primary;
+    public void setPrimary(boolean primary) {
+        this.primary = primary;
     }
 
 }

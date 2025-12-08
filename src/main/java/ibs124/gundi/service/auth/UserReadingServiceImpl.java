@@ -31,7 +31,7 @@ class UserReadingServiceImpl implements UserReadingService, UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOptional = username.contains("@")
                 ? this.emailRepository
-                        .findByNameAndIsPrimaryTrue(username)
+                        .findByNameAndPrimaryTrue(username)
                         .map(x -> x.getUser())
                 : this.userRepository.findByUsername(username);
 
