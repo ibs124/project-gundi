@@ -1,5 +1,7 @@
 package ibs124.gundi.init;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -8,6 +10,8 @@ import ibs124.gundi.config.PropertyConfig;
 @Component
 class AppInitializer implements CommandLineRunner {
 
+    private static final Logger log = LoggerFactory.getLogger(AppInitializer.class);
+
     private final PropertyConfig propertyConfig;
 
     public AppInitializer(PropertyConfig propertyConfig) {
@@ -15,9 +19,9 @@ class AppInitializer implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
 
-        IO.println(this.propertyConfig);
+        log.info("{}", propertyConfig);
     }
 
 }
