@@ -1,38 +1,38 @@
-package ibs124.gundi.util.emailsender;
+package ibs124.gundi.service.auth;
 
 import java.io.UnsupportedEncodingException;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import ibs124.gundi.config.PropertyConfig;
+import ibs124.gundi.model.dto.EmailVerificationSendDto;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
-@Component
-class EmailSernderImpl implements EmailSernder {
+@Service
+class EmailSendingServiceImpl implements EmailSendingService {
 
     private final JavaMailSender javaMailSender;
-    private final String officialEmail;
+    private final PropertyConfig properties;
 
-    public EmailSernderImpl(
+    public EmailSendingServiceImpl(
             JavaMailSender javaMailSender,
-            @Value("${mail_username}") String senderEmail) {
+            PropertyConfig properties) {
         this.javaMailSender = javaMailSender;
-        this.officialEmail = senderEmail;
+        this.properties = properties;
     }
 
     @Override
-    public void send(EmailSendRequest request) {
+    public void send(EmailVerificationSendDto request) {
         MimeMessage mimeMessage = this.javaMailSender.createMimeMessage();
 
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
 
-        String from = request.from() == null ? this.officialEmail : request.from();
-
         try {
-            messageHelper.setFrom(from, "");
+            messageHelper.setFrom(
+                    this.properties.mailFrom(), this.properties.mailDisplayName());
             messageHelper.setTo(request.to());
             messageHelper.setSubject(request.subject());
             messageHelper.setText(request.text(), true);
