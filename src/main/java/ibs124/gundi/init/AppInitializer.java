@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import ibs124.gundi.config.PropertyConfig;
+import ibs124.gundi.config.thymeleaf.AttributeConfig;
 
 @Component
 class AppInitializer implements CommandLineRunner {
@@ -22,6 +23,8 @@ class AppInitializer implements CommandLineRunner {
     public void run(String... args) {
 
         log.info("{}", propertyConfig);
+
+        log.info("{}", AttributeConfig.ROUTES_MAP);
     }
 
 }

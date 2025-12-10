@@ -1,8 +1,12 @@
 package ibs124.gundi.config.thymeleaf;
 
-import static ibs124.gundi.config.RouteConfig.*;
-
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import ibs124.gundi.config.RouteConfig;
 
 public abstract class AttributeConfig {
 
@@ -21,10 +25,23 @@ public abstract class AttributeConfig {
 
     public static final String ROUTES = "routes";
 
-    public static final Map<String, String> ROUTES_MAP = Map.of(
-            "index", INDEX,
-            "register", REGISTER,
-            "login", LOGIN,
-            "logout", LOGOUT,
-            "me", USERS_ME);
+    public static final Map<String, String> ROUTES_MAP;
+
+    static {
+        ROUTES_MAP = Stream
+                .of(RouteConfig.class.getDeclaredFields())
+                .filter(f -> Modifier.isPublic(f.getModifiers()))
+                .filter(f -> Modifier.isStatic(f.getModifiers()))
+                .filter(f -> Modifier.isFinal(f.getModifiers()))
+                .filter(f -> f.getType().equals(String.class))
+                .collect(Collectors.toUnmodifiableMap(
+                        Field::getName,
+                        field -> {
+                            try {
+                                return (String) field.get(null);
+                            } catch (IllegalAccessException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }));
+    }
 }
