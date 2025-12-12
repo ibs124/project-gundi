@@ -1,4 +1,4 @@
-package ibs124.gundi.model.domain;
+package ibs124.gundi.model.entity;
 
 import java.time.Instant;
 
@@ -12,7 +12,7 @@ import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @Table(name = "emails")
-public class Email extends AbstractAuditableDomainModel {
+public class Email extends AbstractEntity {
 
     private User user;
     private String name;

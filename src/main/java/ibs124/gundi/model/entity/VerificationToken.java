@@ -1,4 +1,4 @@
-package ibs124.gundi.model.domain;
+package ibs124.gundi.model.entity;
 
 import java.time.Instant;
 
@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user_verification_tokens")
-public class VerificationToken extends AbstractDomainModel {
+public class VerificationToken extends AbstractEntity {
 
     private User user;
     private String value;

@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceCreatingException;
-import ibs124.gundi.model.domain.VerificationToken;
+import ibs124.gundi.model.entity.VerificationToken;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.VerificationTokenRepository;
 

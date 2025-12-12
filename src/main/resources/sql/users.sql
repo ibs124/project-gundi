@@ -109,7 +109,7 @@ SET
     `password` = '$2a$12$rsH4xQP6BT.9f508L9Qiru2OtjvVfmYw16p/bD3VYHtacjH0Vyz5K',
     `enabled` = 1;
 
-INSERT INTO `user_roles` (`type`) VALUES ('ROOT'), ('ADMIN'), ('USER');
+INSERT INTO `roles` (`type`) VALUES ('ROOT'), ('ADMIN'), ('USER');
 
 INSERT INTO `users_roles_map` (`user_id`, `role_id`)
 SELECT `id`, 1 FROM `users` WHERE `id` = 1;

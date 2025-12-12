@@ -12,9 +12,9 @@ public record UserDto(
         @PositiveOrZero long id,
         Instant createdAt,
         Instant updatedAt,
-        Set<@Valid UserRoleDto> roles,
+        Set<@Valid RoleDto> roles,
         @ValidUsername String username,
-        @ValidEmail String email) {
+        @ValidEmail String email) implements AbstractDto {
 
     public UserDto {
         roles = Set.copyOf(roles);

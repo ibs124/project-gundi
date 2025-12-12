@@ -5,7 +5,8 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ibs124.gundi.model.domain.VerificationToken;
+import ibs124.gundi.model.entity.VerificationToken;
+
 import java.time.Instant;
 
 @Repository

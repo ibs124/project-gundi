@@ -11,7 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-import ibs124.gundi.model.enumm.UserRoleType;
+import ibs124.gundi.model.enumm.RoleType;
 
 @EnableWebSecurity
 @Configuration
@@ -34,13 +34,13 @@ class SecurityConfig {
                         .permitAll()
 
                         .requestMatchers(USERS + this.subroutesMatcher)
-                        .hasRole(UserRoleType.USER.name())
+                        .hasRole(RoleType.USER.name())
 
                         .requestMatchers(ADMINS + this.subroutesMatcher)
-                        .hasRole(UserRoleType.ADMIN.name())
+                        .hasRole(RoleType.ADMIN.name())
 
                         .requestMatchers(ROOT + this.subroutesMatcher)
-                        .hasRole(UserRoleType.ROOT.name())
+                        .hasRole(RoleType.ROOT.name())
 
                         .anyRequest().authenticated())
 

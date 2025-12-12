@@ -1,4 +1,4 @@
-package ibs124.gundi.model.domain;
+package ibs124.gundi.model.entity;
 
 import java.time.Instant;
 
@@ -7,16 +7,30 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import ibs124.gundi.config.JpaConfig;
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class AbstractAuditableDomainModel extends AbstractDomainModel {
+public abstract class AbstractEntity {
 
+    private Long id;
     private Instant createdAt;
     private Instant updatedAt;
 
-    public AbstractAuditableDomainModel() {
+    public AbstractEntity() {
         super();
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @CreationTimestamp

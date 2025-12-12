@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.dto.RegisterDto;
 import ibs124.gundi.model.dto.RegisterResponseDto;
 import ibs124.gundi.model.dto.UserDto;
+import ibs124.gundi.model.entity.User;
 import ibs124.gundi.repository.UserRepository;
 import jakarta.transaction.Transactional;
 

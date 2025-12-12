@@ -2,11 +2,11 @@ package ibs124.gundi.model.dto;
 
 import java.time.Instant;
 
-import ibs124.gundi.model.enumm.UserRoleType;
+import ibs124.gundi.model.enumm.RoleType;
 
-public record UserRoleDto(
+public record RoleDto(
         long id,
         Instant createdAt,
         Instant updatedAt,
-        UserRoleType type) implements AbstractAuditableDto {
+        RoleType type) implements AbstractDto {
 }
