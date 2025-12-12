@@ -5,7 +5,7 @@ import java.time.Instant;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import ibs124.gundi.config.JpaPropertiesConfig;
+import ibs124.gundi.config.JpaConfig;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 
@@ -20,7 +20,7 @@ public abstract class AbstractAuditableDomainModel extends AbstractDomainModel {
     }
 
     @CreationTimestamp
-    @Column(nullable = false, columnDefinition = JpaPropertiesConfig.COULUMN_CREATED_AT)
+    @Column(nullable = false, columnDefinition = JpaConfig.COULUMN_CREATED_AT)
     public Instant getCreatedAt() {
         return createdAt;
     }
@@ -30,7 +30,7 @@ public abstract class AbstractAuditableDomainModel extends AbstractDomainModel {
     }
 
     @UpdateTimestamp
-    @Column(columnDefinition = JpaPropertiesConfig.COULUMN_UPDATED_AT)
+    @Column(columnDefinition = JpaConfig.COULUMN_UPDATED_AT)
     public Instant getUpdatedAt() {
         return updatedAt;
     }

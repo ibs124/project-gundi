@@ -1,6 +1,6 @@
 package ibs124.gundi.config;
 
-public abstract class JpaPropertiesConfig {
+public abstract class JpaConfig {
 
     public static final String COULUMN_CREATED_AT = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP";
 

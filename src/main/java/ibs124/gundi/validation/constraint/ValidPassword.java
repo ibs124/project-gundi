@@ -6,20 +6,20 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import ibs124.gundi.config.message.ErrorMessageConfig;
+import ibs124.gundi.config.MessageConfig;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@NotBlank(message = ErrorMessageConfig.BLANK_FIELD)
-@Size(min = 6, message = ErrorMessageConfig.PASSWORD)
+@NotBlank(message = MessageConfig.BLANK_FIELD)
+@Size(min = 6, message = MessageConfig.USER_PASSWORD_ERROR)
 @Documented
 @Target({ ElementType.ANNOTATION_TYPE, ElementType.TYPE, ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
 public @interface ValidPassword {
-    String message() default ErrorMessageConfig.PASSWORD;
+    String message() default MessageConfig.USER_PASSWORD_ERROR;
 
     Class<?>[] groups() default {};
 

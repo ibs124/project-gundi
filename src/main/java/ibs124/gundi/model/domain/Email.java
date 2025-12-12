@@ -2,7 +2,7 @@ package ibs124.gundi.model.domain;
 
 import java.time.Instant;
 
-import ibs124.gundi.config.JpaPropertiesConfig;
+import ibs124.gundi.config.JpaConfig;
 import ibs124.gundi.validation.constraint.ValidEmail;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,7 +51,7 @@ public class Email extends AbstractAuditableDomainModel {
         this.verifiedAt = verifiedAt;
     }
 
-    @Column(name = "is_primary", nullable = false, columnDefinition = JpaPropertiesConfig.COLUMN_BOOLEAN)
+    @Column(name = "is_primary", nullable = false, columnDefinition = JpaConfig.COLUMN_BOOLEAN)
     public boolean isPrimary() {
         return primary;
     }

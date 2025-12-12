@@ -3,7 +3,7 @@ package ibs124.gundi.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import ibs124.gundi.config.JpaPropertiesConfig;
+import ibs124.gundi.config.JpaConfig;
 import ibs124.gundi.validation.constraint.ValidPassword;
 import ibs124.gundi.validation.constraint.ValidUsername;
 import jakarta.persistence.Column;
@@ -79,7 +79,7 @@ public class User extends AbstractAuditableDomainModel {
         this.username = username;
     }
 
-    @Column(nullable = false, columnDefinition = JpaPropertiesConfig.COLUMN_BOOLEAN)
+    @Column(nullable = false, columnDefinition = JpaConfig.COLUMN_BOOLEAN)
     public boolean isEnabled() {
         return enabled;
     }
