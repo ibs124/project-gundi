@@ -3,6 +3,7 @@ package ibs124.gundi.service.auth;
 import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceReadingException;
+import ibs124.gundi.mapper.EmailMapper;
 import ibs124.gundi.model.domain.Email;
 import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.service.EmailCreateDTO;
@@ -15,10 +16,13 @@ class EmailCreatingServiceImpl implements EmailCreatingService {
 
     private final EmailRepository emailRepository;
     private final UserRepository userRepository;
+    private final EmailMapper emailMapper;
 
-    public EmailCreatingServiceImpl(EmailRepository emailRepository, UserRepository userRepository) {
+    public EmailCreatingServiceImpl(EmailRepository emailRepository, UserRepository userRepository,
+            EmailMapper emailMapper) {
         this.emailRepository = emailRepository;
         this.userRepository = userRepository;
+        this.emailMapper = emailMapper;
     }
 
     @Override
@@ -27,14 +31,14 @@ class EmailCreatingServiceImpl implements EmailCreatingService {
                 .findById(dto.userId())
                 .orElseThrow(() -> new ResourceReadingException());
 
-        Email email = new Email();
+        Email email = this.emailMapper
+                .toDomainModel(dto);
+
         email.setUser(user);
-        email.setPrimary(dto.primary());
-        email.setName(dto.name());
 
         email = this.emailRepository.save(email);
 
-        return new EmailDTO(email.getId(), null, email.getName());
+        return this.emailMapper.toServiceModel(email);
     }
 
 }
