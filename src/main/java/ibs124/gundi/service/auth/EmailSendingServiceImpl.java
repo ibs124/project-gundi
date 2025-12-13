@@ -7,7 +7,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import ibs124.gundi.config.PropertyConfig;
-import ibs124.gundi.model.dto.EmailVerificationSendDto;
+import ibs124.gundi.model.service.EmailVerificationSendDto;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 

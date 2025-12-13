@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.config.MessageConfig;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.entity.User;
+import ibs124.gundi.model.domain.User;
 import ibs124.gundi.repository.EmailRepository;
 import ibs124.gundi.repository.UserRepository;
 

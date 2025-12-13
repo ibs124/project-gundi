@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceUpdatingException;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.dto.UserDto;
-import ibs124.gundi.model.entity.User;
-import ibs124.gundi.model.entity.VerificationToken;
+import ibs124.gundi.model.domain.User;
+import ibs124.gundi.model.domain.VerificationToken;
+import ibs124.gundi.model.service.UserDto;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.VerificationTokenRepository;
 import jakarta.validation.Validator;

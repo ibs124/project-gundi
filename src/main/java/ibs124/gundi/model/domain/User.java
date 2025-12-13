@@ -1,4 +1,4 @@
-package ibs124.gundi.model.entity;
+package ibs124.gundi.model.domain;
 
 import java.util.HashSet;
 import java.util.Set;

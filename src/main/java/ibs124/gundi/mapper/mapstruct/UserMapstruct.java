@@ -6,8 +6,8 @@ import org.mapstruct.Mapping;
 import ibs124.gundi.config.MapperConfig;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.mapper.RoleMapper;
-import ibs124.gundi.model.dto.UserDetailsImpl;
-import ibs124.gundi.model.entity.User;
+import ibs124.gundi.model.domain.User;
+import ibs124.gundi.model.service.UserDetailsImpl;
 
 @Mapper(componentModel = MapperConfig.MAPSTRUCT_COMPONENT_MODEL, uses = RoleMapper.class)
 interface UserMapstruct extends UserMapper {

@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.dto.RegisterDto;
-import ibs124.gundi.model.dto.RegisterResponseDto;
-import ibs124.gundi.model.dto.UserDto;
-import ibs124.gundi.model.entity.User;
+import ibs124.gundi.model.domain.User;
+import ibs124.gundi.model.service.RegisterDto;
+import ibs124.gundi.model.service.RegisterResponseDto;
+import ibs124.gundi.model.service.UserDto;
 import ibs124.gundi.repository.UserRepository;
 import jakarta.transaction.Transactional;
 
@@ -48,7 +48,7 @@ class RegisterServiceImpl implements RegisterService {
             String token = this.tokenCreatingService
                     .createByUserId(userDto.id());
 
-            return new RegisterResponseDto(userDto, token);
+            return new RegisterResponseDto(request.email(), token);
         } catch (Exception e) {
             throw new ResourceCreatingException(e);
         }

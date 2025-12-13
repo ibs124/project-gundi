@@ -1,6 +1,6 @@
-package ibs124.gundi.model.entity;
+package ibs124.gundi.model.domain;
 
-import ibs124.gundi.model.enumm.RoleType;
+import ibs124.gundi.model.enumm.RoleName;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -10,23 +10,23 @@ import jakarta.persistence.Table;
 @Table(name = "roles")
 public class Role extends AbstractEntity {
 
-    private RoleType type;
+    private RoleName name;
 
     public Role() {
         super();
     }
 
-    public Role(RoleType x) {
+    public Role(RoleName x) {
         this();
-        this.setType(x);
+        this.setName(x);
     }
 
     @Enumerated(EnumType.STRING)
-    public RoleType getType() {
-        return type;
+    public RoleName getName() {
+        return name;
     }
 
-    public void setType(RoleType type) {
-        this.type = type;
+    public void setName(RoleName type) {
+        this.name = type;
     }
 }

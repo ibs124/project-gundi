@@ -1,20 +1,20 @@
-package ibs124.gundi.model.dto;
+package ibs124.gundi.model.service;
 
-import java.time.Instant;
 import java.util.Set;
 
-import ibs124.gundi.validation.constraint.ValidEmail;
+import ibs124.gundi.validation.constraint.ValidFullName;
 import ibs124.gundi.validation.constraint.ValidUsername;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
+@NotNull
 public record UserDto(
         @PositiveOrZero long id,
-        Instant createdAt,
-        Instant updatedAt,
+        boolean enabled,
         Set<@Valid RoleDto> roles,
         @ValidUsername String username,
-        @ValidEmail String email) implements AbstractDto {
+        @ValidFullName String fullName) {
 
     public UserDto {
         roles = Set.copyOf(roles);
