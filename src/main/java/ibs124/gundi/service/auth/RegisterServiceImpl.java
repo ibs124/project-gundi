@@ -1,33 +1,30 @@
 package ibs124.gundi.service.auth;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.domain.User;
+import ibs124.gundi.model.service.EmailCreateDTO;
+import ibs124.gundi.model.service.EmailDTO;
 import ibs124.gundi.model.service.RegisterDTO;
 import ibs124.gundi.model.service.RegisterResponseDTO;
+import ibs124.gundi.model.service.UserCreateDTO;
 import ibs124.gundi.model.service.UserDTO;
-import ibs124.gundi.repository.UserRepository;
 import jakarta.transaction.Transactional;
 
 @Service
 class RegisterServiceImpl implements RegisterService {
 
-    private final UserRepository userRepository;
     private final UserMapper userMapper;
-    private final PasswordEncoder passwordEncoder;
+    private final UserCreatingService userCreatingService;
+    private final EmailCreatingService emailCreatingService;
     private final VerificationTokenCreatingService tokenCreatingService;
 
-    public RegisterServiceImpl(
-            UserRepository userRepository,
-            UserMapper userMapper,
-            PasswordEncoder passwordEncoder,
-            VerificationTokenCreatingService tokenCreatingService) {
-        this.userRepository = userRepository;
+    public RegisterServiceImpl(UserCreatingService userCreatingService, EmailCreatingService emailCreatingService,
+            VerificationTokenCreatingService tokenCreatingService, UserMapper userMapper) {
         this.userMapper = userMapper;
-        this.passwordEncoder = passwordEncoder;
+        this.userCreatingService = userCreatingService;
+        this.emailCreatingService = emailCreatingService;
         this.tokenCreatingService = tokenCreatingService;
     }
 
@@ -35,20 +32,18 @@ class RegisterServiceImpl implements RegisterService {
     @Transactional
     public RegisterResponseDTO register(RegisterDTO request) {
         try {
-            User user = this.userMapper.toDomainModel(request);
+            UserCreateDTO userCreateDTO = this.userMapper.toServiceModel(request);
 
-            user.setPassword(
-                    this.passwordEncoder
-                            .encode(user.getPassword()));
+            UserDTO user = this.userCreatingService.create(userCreateDTO);
 
-            user = this.userRepository.save(user);
-
-            UserDTO userDto = this.userMapper.toServiceModel(user);
+            EmailDTO email = this.emailCreatingService
+                    .create(new EmailCreateDTO(user.id(), request.email(), true));
 
             String token = this.tokenCreatingService
-                    .createByUserId(userDto.id());
+                    .createByUserId(user.id());
 
-            return new RegisterResponseDTO(request.email(), token);
+            return new RegisterResponseDTO(email.name(), token);
+
         } catch (Exception e) {
             throw new ResourceCreatingException(e);
         }
