@@ -1,0 +1,12 @@
+package ibs124.gundi.model.service;
+
+import org.springframework.lang.NonNull;
+
+public record EmailVerificationSendDTO(
+        @NonNull String from,
+        @NonNull String displayName,
+        @NonNull String to,
+        @NonNull String subject,
+        @NonNull String text,
+        boolean isHtml) {
+}
