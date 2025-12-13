@@ -8,7 +8,7 @@ import ibs124.gundi.exception.ResourceUpdatingException;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.domain.VerificationToken;
-import ibs124.gundi.model.service.UserDto;
+import ibs124.gundi.model.service.UserDTO;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.VerificationTokenRepository;
 import jakarta.validation.Validator;
@@ -33,7 +33,7 @@ class UserVerifyingServiceImpl implements UserVerifyingService {
     }
 
     @Override
-    public UserDto verifyByToken(String request) {
+    public UserDTO verifyByToken(String request) {
         try {
             VerificationToken token = this.tokenRepository
                     .findByValueAndExpiresAtBefore(request, Instant.now())

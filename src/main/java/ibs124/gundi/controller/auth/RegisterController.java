@@ -16,7 +16,7 @@ import ibs124.gundi.controller.AbstractController;
 import ibs124.gundi.event.UserVerificationEvent;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.api.RegisterRequest;
-import ibs124.gundi.model.service.RegisterResponseDto;
+import ibs124.gundi.model.service.RegisterResponseDTO;
 import ibs124.gundi.service.auth.RegisterService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -66,7 +66,7 @@ public class RegisterController extends AbstractController {
             return super.getRedirectUrl(REGISTER);
         }
 
-        RegisterResponseDto result = this.registerService
+        RegisterResponseDTO result = this.registerService
                 .register(this.userMapper.toServiceModel(bindingModel));
 
         UserVerificationEvent event = new UserVerificationEvent(

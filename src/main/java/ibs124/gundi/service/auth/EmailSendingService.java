@@ -1,8 +1,8 @@
 package ibs124.gundi.service.auth;
 
-import ibs124.gundi.model.service.EmailVerificationSendDto;
+import ibs124.gundi.model.service.EmailVerificationSendDTO;
 
 public interface EmailSendingService {
 
-    void send(EmailVerificationSendDto request);
+    void send(EmailVerificationSendDTO request);
 }

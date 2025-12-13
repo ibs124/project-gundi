@@ -6,8 +6,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import ibs124.gundi.config.PropertyConfig;
-import ibs124.gundi.model.service.EmailVerificationSendDto;
+import ibs124.gundi.model.service.EmailVerificationSendDTO;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
@@ -15,29 +14,24 @@ import jakarta.mail.internet.MimeMessage;
 class EmailSendingServiceImpl implements EmailSendingService {
 
     private final JavaMailSender javaMailSender;
-    private final PropertyConfig properties;
 
-    public EmailSendingServiceImpl(
-            JavaMailSender javaMailSender,
-            PropertyConfig properties) {
+    public EmailSendingServiceImpl(JavaMailSender javaMailSender) {
         this.javaMailSender = javaMailSender;
-        this.properties = properties;
     }
 
     @Override
-    public void send(EmailVerificationSendDto request) {
-        MimeMessage mimeMessage = this.javaMailSender.createMimeMessage();
+    public void send(EmailVerificationSendDTO dto) {
+        MimeMessage message = this.javaMailSender.createMimeMessage();
 
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
+        MimeMessageHelper helper = new MimeMessageHelper(message);
 
         try {
-            messageHelper.setFrom(
-                    this.properties.mailFrom(), this.properties.mailDisplayName());
-            messageHelper.setTo(request.to());
-            messageHelper.setSubject(request.subject());
-            messageHelper.setText(request.text(), true);
+            helper.setFrom(dto.from(), dto.displayName());
+            helper.setTo(dto.to());
+            helper.setSubject(dto.subject());
+            helper.setText(dto.text(), true);
 
-            this.javaMailSender.send(mimeMessage);
+            this.javaMailSender.send(message);
         } catch (MessagingException | UnsupportedEncodingException e) {
             System.err.println(e.getMessage());
         }

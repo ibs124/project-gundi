@@ -5,17 +5,17 @@ import java.util.Set;
 import org.springframework.security.core.GrantedAuthority;
 
 import ibs124.gundi.model.domain.Role;
-import ibs124.gundi.model.service.RoleDto;
+import ibs124.gundi.model.service.RoleDTO;
 
 public interface RoleMapper {
 
-    RoleDto toServiceModel(Role src);
+    RoleDTO toServiceModel(Role src);
 
-    Set<RoleDto> toServiceModelAll(Set<Role> src);
+    Set<RoleDTO> toServiceModelAll(Set<Role> src);
 
-    Role toDomainModel(RoleDto src);
+    Role toDomainModel(RoleDTO src);
 
-    Set<Role> toDomainModelAll(Set<RoleDto> src);
+    Set<Role> toDomainModelAll(Set<RoleDTO> src);
 
     GrantedAuthority toSecurityModel(Role src);
 
