@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.domain.User;
-import ibs124.gundi.model.service.UserCreateDTO;
-import ibs124.gundi.model.service.UserDTO;
+import ibs124.gundi.model.dto.UserCreateDTO;
+import ibs124.gundi.model.dto.UserDTO;
 import ibs124.gundi.repository.UserRepository;
 
 @Service

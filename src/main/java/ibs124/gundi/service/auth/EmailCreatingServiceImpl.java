@@ -6,8 +6,8 @@ import ibs124.gundi.exception.ResourceReadingException;
 import ibs124.gundi.mapper.EmailMapper;
 import ibs124.gundi.model.domain.Email;
 import ibs124.gundi.model.domain.User;
-import ibs124.gundi.model.service.EmailCreateDTO;
-import ibs124.gundi.model.service.EmailDTO;
+import ibs124.gundi.model.dto.EmailCreateDTO;
+import ibs124.gundi.model.dto.EmailDTO;
 import ibs124.gundi.repository.EmailRepository;
 import ibs124.gundi.repository.UserRepository;
 

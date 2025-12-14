@@ -8,7 +8,7 @@ import ibs124.gundi.exception.ResourceUpdatingException;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.domain.VerificationToken;
-import ibs124.gundi.model.service.UserDTO;
+import ibs124.gundi.model.dto.UserDTO;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.VerificationTokenRepository;
 import jakarta.validation.Validator;

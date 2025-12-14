@@ -1,7 +1,7 @@
 package ibs124.gundi.service.auth;
 
-import ibs124.gundi.model.service.EmailCreateDTO;
-import ibs124.gundi.model.service.EmailDTO;
+import ibs124.gundi.model.dto.EmailCreateDTO;
+import ibs124.gundi.model.dto.EmailDTO;
 
 public interface EmailCreatingService {
 

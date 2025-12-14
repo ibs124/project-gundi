@@ -1,7 +1,7 @@
 package ibs124.gundi.service.auth;
 
-import ibs124.gundi.model.service.RegisterDTO;
-import ibs124.gundi.model.service.RegisterResponseDTO;
+import ibs124.gundi.model.dto.RegisterDTO;
+import ibs124.gundi.model.dto.RegisterResponseDTO;
 
 public interface RegisterService {
 

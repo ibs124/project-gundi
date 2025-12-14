@@ -4,12 +4,12 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.service.EmailCreateDTO;
-import ibs124.gundi.model.service.EmailDTO;
-import ibs124.gundi.model.service.RegisterDTO;
-import ibs124.gundi.model.service.RegisterResponseDTO;
-import ibs124.gundi.model.service.UserCreateDTO;
-import ibs124.gundi.model.service.UserDTO;
+import ibs124.gundi.model.dto.EmailCreateDTO;
+import ibs124.gundi.model.dto.EmailDTO;
+import ibs124.gundi.model.dto.RegisterDTO;
+import ibs124.gundi.model.dto.RegisterResponseDTO;
+import ibs124.gundi.model.dto.UserCreateDTO;
+import ibs124.gundi.model.dto.UserDTO;
 import jakarta.transaction.Transactional;
 
 @Service
