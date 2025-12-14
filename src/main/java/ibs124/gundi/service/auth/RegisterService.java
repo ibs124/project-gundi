@@ -5,6 +5,6 @@ import ibs124.gundi.model.dto.RegisterResponseDTO;
 
 public interface RegisterService {
 
-   RegisterResponseDTO register(RegisterDTO request);
+   RegisterResponseDTO register(RegisterDTO dto, String appUrl);
    
 }

@@ -5,17 +5,14 @@ import static ibs124.gundi.config.RouteConfig.SUCCESS;
 import static ibs124.gundi.config.thymeleaf.AttributeConfig.BINDING_MODEL;
 import static ibs124.gundi.config.thymeleaf.AttributeConfig.BINDING_RESULT;
 
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import ibs124.gundi.config.thymeleaf.TemplateConfig;
-import ibs124.gundi.event.UserVerificationEvent;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.api.RegisterRequest;
-import ibs124.gundi.model.dto.RegisterResponseDTO;
 import ibs124.gundi.service.auth.RegisterService;
 import ibs124.gundi.util.RouteUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,15 +28,10 @@ public class RegisterController {
 
     private final RegisterService registerService;
     private final UserMapper userMapper;
-    private final ApplicationEventPublisher eventPublisher;
 
-    public RegisterController(
-            RegisterService registerService,
-            UserMapper userMapper,
-            ApplicationEventPublisher eventPublisher) {
+    public RegisterController(RegisterService registerService, UserMapper userMapper) {
         this.registerService = registerService;
         this.userMapper = userMapper;
-        this.eventPublisher = eventPublisher;
     }
 
     @GetMapping
@@ -66,15 +58,10 @@ public class RegisterController {
             return RouteUtils.getRedirectUrl(REGISTER);
         }
 
-        RegisterResponseDTO result = this.registerService
-                .register(this.userMapper.toServiceModel(bindingModel));
-
-        UserVerificationEvent event = new UserVerificationEvent(
-                result.verificationToken(),
-                result.email(),
-                RouteUtils.getContextUrl(httpServletRequest));
-
-        this.eventPublisher.publishEvent(event);
+        this.registerService
+                .register(
+                        this.userMapper.toServiceModel(bindingModel),
+                        RouteUtils.getContextUrl(httpServletRequest));
 
         return RouteUtils.getRedirectUrl(REGISTER + SUCCESS);
     }
