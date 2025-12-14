@@ -24,6 +24,13 @@ public class VerificationToken extends AbstractEntity {
         super();
     }
 
+    public VerificationToken(User user, String value, Instant expiresAt) {
+        this();
+        this.setUser(user);
+        this.setValue(value);
+        this.setExpiresAt(expiresAt);
+    }
+
     @Valid
     @OneToOne(optional = false)
     @MapsId

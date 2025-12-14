@@ -23,6 +23,13 @@ public class Email extends AbstractEntity {
         super();
     }
 
+    public Email(User user, String name, boolean primary) {
+        super();
+        this.setUser(user);
+        this.setName(name);
+        this.setPrimary(primary);
+    }
+
     @ManyToOne(optional = false)
     public User getUser() {
         return user;

@@ -4,58 +4,42 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import ibs124.gundi.event.UserVerificationEvent;
-import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.mapper.UserMapper;
-import ibs124.gundi.model.dto.EmailCreateDTO;
-import ibs124.gundi.model.dto.EmailDTO;
+import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.dto.RegisterDTO;
 import ibs124.gundi.model.dto.RegisterResponseDTO;
-import ibs124.gundi.model.dto.UserDTO;
 import jakarta.transaction.Transactional;
 
 @Service
 class RegisterServiceImpl implements RegisterService {
 
-    private final UserMapper userMapper;
-    private final UserCreatingService userCreatingService;
-    private final EmailCreatingService emailCreatingService;
-    private final VerificationTokenCreatingService tokenCreatingService;
     private final ApplicationEventPublisher eventPublisher;
+    private final UserMapper userMapper;
+    private final UserFactory userFactory;
 
-    public RegisterServiceImpl(
-            UserCreatingService userCreatingService,
-            EmailCreatingService emailCreatingService,
-            VerificationTokenCreatingService tokenCreatingService,
-            UserMapper userMapper,
-            ApplicationEventPublisher eventPublisher) {
-        this.userMapper = userMapper;
-        this.userCreatingService = userCreatingService;
-        this.emailCreatingService = emailCreatingService;
-        this.tokenCreatingService = tokenCreatingService;
+    public RegisterServiceImpl(ApplicationEventPublisher eventPublisher, UserMapper userMapper,
+            UserFactory userCreatingService) {
         this.eventPublisher = eventPublisher;
+        this.userMapper = userMapper;
+        this.userFactory = userCreatingService;
     }
 
     @Override
     @Transactional
     public RegisterResponseDTO register(RegisterDTO request, String appUrl) {
-        try {
-            UserDTO user = this.userCreatingService
-                    .create(this.userMapper.toServiceModel(request));
+        String email = request.email();
 
-            EmailDTO email = this.emailCreatingService
-                    .create(new EmailCreateDTO(user.id(), request.email(), true));
+        User user = this.userFactory.createUser(
+                this.userMapper.toDomainModel(request), email);
 
-            String token = this.tokenCreatingService
-                    .createByUserId(user.id());
+        String token = user.getToken().getValue();
 
-            RegisterResponseDTO response = new RegisterResponseDTO(email.name(), token);
+        RegisterResponseDTO response = new RegisterResponseDTO(email, token);
 
-            this.publishEvent(response, appUrl);
+        this.publishEvent(response, appUrl);
 
-            return response;
-        } catch (Exception e) {
-            throw new ResourceCreatingException(e);
-        }
+        return response;
+
     }
 
     private void publishEvent(RegisterResponseDTO dto, String url) {
@@ -66,4 +50,5 @@ class RegisterServiceImpl implements RegisterService {
 
         this.eventPublisher.publishEvent(event);
     }
+
 }

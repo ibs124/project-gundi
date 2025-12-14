@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -19,6 +21,8 @@ import jakarta.persistence.Transient;
 @Table(name = "users")
 public class User extends AbstractEntity {
 
+    private Set<Email> emails = new HashSet<>();
+    private VerificationToken token;
     private Set<Role> roles = new HashSet<>();
     private String username;
     private String password;
@@ -30,15 +34,43 @@ public class User extends AbstractEntity {
     }
 
     @Transient
-    public Role removeRole(Role role) {
-        this.getRoles().remove(role);
-        return role;
+    public boolean add(Email x) {
+        x.setUser(this);
+        return this.getEmails().add(x);
     }
 
     @Transient
-    public Role addRole(Role role) {
-        this.getRoles().add(role);
-        return role;
+    public boolean remove(Email x) {
+        return this.getEmails().remove(x);
+    }
+
+    @Transient
+    public boolean add(Role x) {
+        return this.getRoles().add(x);
+    }
+
+    @Transient
+    public boolean remove(Role x) {
+        return this.getRoles().remove(x);
+    }
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+    public Set<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(Set<Email> emails) {
+        this.emails = emails;
+    }
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+    public VerificationToken getToken() {
+        return token;
+    }
+
+    public void setToken(VerificationToken token) {
+        this.token = token;
+        token.setUser(this);
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
