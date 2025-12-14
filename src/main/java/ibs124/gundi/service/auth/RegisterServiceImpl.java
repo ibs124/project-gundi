@@ -20,8 +20,11 @@ class RegisterServiceImpl implements RegisterService {
     private final EmailCreatingService emailCreatingService;
     private final VerificationTokenCreatingService tokenCreatingService;
 
-    public RegisterServiceImpl(UserCreatingService userCreatingService, EmailCreatingService emailCreatingService,
-            VerificationTokenCreatingService tokenCreatingService, UserMapper userMapper) {
+    public RegisterServiceImpl(
+            UserCreatingService userCreatingService,
+            EmailCreatingService emailCreatingService,
+            VerificationTokenCreatingService tokenCreatingService,
+            UserMapper userMapper) {
         this.userMapper = userMapper;
         this.userCreatingService = userCreatingService;
         this.emailCreatingService = emailCreatingService;

@@ -6,7 +6,10 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import ibs124.gundi.config.PropertyConfig;
 import ibs124.gundi.exception.ResourceCreatingException;
+import ibs124.gundi.exception.ResourceReadingException;
+import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.domain.VerificationToken;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.VerificationTokenRepository;
@@ -14,15 +17,15 @@ import ibs124.gundi.repository.VerificationTokenRepository;
 @Service
 class VerificationTokenCreatingServiceImpl implements VerificationTokenCreatingService {
 
-    private final int tokenExpirationMinutes = 15;
     private final VerificationTokenRepository tokenRepository;
     private final UserRepository userRepository;
+    private final PropertyConfig config;
 
-    public VerificationTokenCreatingServiceImpl(
-            VerificationTokenRepository tokenRepository,
-            UserRepository userRepository) {
+    public VerificationTokenCreatingServiceImpl(VerificationTokenRepository tokenRepository,
+            UserRepository userRepository, PropertyConfig config) {
         this.tokenRepository = tokenRepository;
         this.userRepository = userRepository;
+        this.config = config;
     }
 
     @Override
@@ -30,11 +33,11 @@ class VerificationTokenCreatingServiceImpl implements VerificationTokenCreatingS
         try {
             VerificationToken token = new VerificationToken();
 
-            token.setUser(this.userRepository.getReferenceById(id));
+            token.setUser(this.getUser(id));
 
-            token.setValue(this.generateValue());
+            token.setExpiresAt(this.getExpiration());
 
-            token.setExpiresAt(this.generateExpiration());
+            token.setValue(getValue());
 
             token = this.tokenRepository.save(token);
 
@@ -44,11 +47,19 @@ class VerificationTokenCreatingServiceImpl implements VerificationTokenCreatingS
         }
     }
 
-    private Instant generateExpiration() {
-        return Instant.now().plus(this.tokenExpirationMinutes, ChronoUnit.MINUTES);
+    private User getUser(long id) {
+        return this.userRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceReadingException());
     }
 
-    private String generateValue() {
+    private Instant getExpiration() {
+        return Instant
+                .now()
+                .plus(this.config.tokenExpirationMinutes(), ChronoUnit.MINUTES);
+    }
+
+    private String getValue() {
         String value = UUID.randomUUID().toString();
 
         while (this.tokenRepository.existsByValue(value)) {

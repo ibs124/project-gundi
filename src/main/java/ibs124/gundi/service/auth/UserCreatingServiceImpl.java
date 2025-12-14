@@ -16,7 +16,9 @@ class UserCreatingServiceImpl implements UserCreatingService {
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
 
-    public UserCreatingServiceImpl(UserRepository userRepository, UserMapper userMapper,
+    public UserCreatingServiceImpl(
+            UserRepository userRepository,
+            UserMapper userMapper,
             PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
