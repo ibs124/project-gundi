@@ -7,10 +7,8 @@ import ibs124.gundi.event.UserVerificationEvent;
 import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.dto.EmailCreateDTO;
-import ibs124.gundi.model.dto.EmailDTO;
 import ibs124.gundi.model.dto.RegisterDTO;
 import ibs124.gundi.model.dto.RegisterResponseDTO;
-import ibs124.gundi.model.dto.UserDTO;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -39,18 +37,21 @@ class RegisterServiceImpl implements RegisterService {
     @Transactional
     public RegisterResponseDTO register(RegisterDTO request, String appUrl) {
         try {
-            UserDTO user = this.userCreatingService
-                    .create(this.userMapper.toServiceModel(request));
+            long userID = this.userCreatingService
+                    .create(this.userMapper.toServiceModel(request))
+                    .id();
 
-            EmailDTO email = this.emailCreatingService
-                    .create(new EmailCreateDTO(user.id(), request.email(), true));
+            String email = this.emailCreatingService
+                    .create(new EmailCreateDTO(userID, request.email(), true))
+                    .name();
 
             String token = this.tokenCreatingService
-                    .createByUserId(user.id());
+                    .createByUserId(userID);
 
-            RegisterResponseDTO response = new RegisterResponseDTO(email.name(), token);
+            this.eventPublisher
+                    .publishEvent(new UserVerificationEvent(token, email, appUrl));
 
-            this.publishEvent(response, appUrl);
+            RegisterResponseDTO response = new RegisterResponseDTO(email, token);
 
             return response;
         } catch (Exception e) {
@@ -58,12 +59,4 @@ class RegisterServiceImpl implements RegisterService {
         }
     }
 
-    private void publishEvent(RegisterResponseDTO dto, String url) {
-        UserVerificationEvent event = new UserVerificationEvent(
-                dto.verificationToken(),
-                dto.email(),
-                url);
-
-        this.eventPublisher.publishEvent(event);
-    }
 }
