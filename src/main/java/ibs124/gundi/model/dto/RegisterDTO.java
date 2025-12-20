@@ -10,5 +10,5 @@ public record RegisterDTO(
         @UniqueUsername @ValidUsername String username,
         @ValidPassword String password,
         @UniqueEmail @ValidEmail String email,
-        String fullName) {
+        String fullName) implements UserCreateDTO {
 }

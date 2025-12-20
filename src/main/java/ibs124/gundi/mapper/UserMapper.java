@@ -9,8 +9,6 @@ import ibs124.gundi.model.dto.UserDetailsDTO;
 
 public interface UserMapper {
 
-    UserCreateDTO toServiceModel(RegisterDTO src);
-
     RegisterDTO toServiceModel(RegisterRequest src);
 
     UserDTO toServiceModel(User src);

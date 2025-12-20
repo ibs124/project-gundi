@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.event.UserVerificationEvent;
 import ibs124.gundi.exception.ResourceCreatingException;
-import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.dto.EmailCreateDTO;
 import ibs124.gundi.model.dto.RegisterDTO;
 import ibs124.gundi.model.dto.RegisterResponseDTO;
@@ -14,7 +13,6 @@ import jakarta.transaction.Transactional;
 @Service
 class RegisterServiceImpl implements RegisterService {
 
-    private final UserMapper userMapper;
     private final UserCreatingService userCreatingService;
     private final EmailCreatingService emailCreatingService;
     private final VerificationTokenCreatingService tokenCreatingService;
@@ -24,9 +22,7 @@ class RegisterServiceImpl implements RegisterService {
             UserCreatingService userCreatingService,
             EmailCreatingService emailCreatingService,
             VerificationTokenCreatingService tokenCreatingService,
-            UserMapper userMapper,
             ApplicationEventPublisher eventPublisher) {
-        this.userMapper = userMapper;
         this.userCreatingService = userCreatingService;
         this.emailCreatingService = emailCreatingService;
         this.tokenCreatingService = tokenCreatingService;
@@ -38,7 +34,7 @@ class RegisterServiceImpl implements RegisterService {
     public RegisterResponseDTO register(RegisterDTO request, String appUrl) {
         try {
             long userID = this.userCreatingService
-                    .create(this.userMapper.toServiceModel(request))
+                    .create(request)
                     .id();
 
             String email = this.emailCreatingService

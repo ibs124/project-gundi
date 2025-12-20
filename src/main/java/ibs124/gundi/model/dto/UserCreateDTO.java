@@ -1,14 +1,10 @@
 package ibs124.gundi.model.dto;
 
-import ibs124.gundi.validation.constraint.UniqueUsername;
-import ibs124.gundi.validation.constraint.ValidFullName;
-import ibs124.gundi.validation.constraint.ValidPassword;
-import ibs124.gundi.validation.constraint.ValidUsername;
-import jakarta.validation.constraints.NotNull;
+public interface UserCreateDTO {
 
-@NotNull
-public record UserCreateDTO(
-        @UniqueUsername @ValidUsername String username,
-        @ValidPassword String password,
-        @ValidFullName String fullName) {
+    String username();
+
+    String password();
+
+    String fullName();
 }
