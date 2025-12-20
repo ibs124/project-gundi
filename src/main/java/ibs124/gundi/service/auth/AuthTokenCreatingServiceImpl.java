@@ -33,7 +33,7 @@ class AuthTokenCreatingServiceImpl implements AuthTokenCreatingService {
         try {
             AuthToken token = new AuthToken();
 
-            token.setUser(this.getUser(id));
+            token.setOwner(this.getUser(id));
 
             token.setExpiresAt(this.getExpiration());
 

@@ -13,7 +13,7 @@ import java.time.Instant;
 public interface AuthTokenRepository
         extends JpaRepository<AuthToken, Long> {
 
-    Optional<AuthToken> findByUserId(long id);
+    Optional<AuthToken> findByOwnerId(long id);
 
     Optional<AuthToken> findByValueAndExpiresAtBefore(String value, Instant expiresAt);
 

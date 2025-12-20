@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "auth_tokens")
 public class AuthToken extends AbstractEntity {
 
-    private User user;
+    private User owner;
     private String value;
     private Instant expiresAt;
 
@@ -27,12 +27,12 @@ public class AuthToken extends AbstractEntity {
     @Valid
     @OneToOne(optional = false)
     @MapsId
-    public User getUser() {
-        return user;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setOwner(User user) {
+        this.owner = user;
     }
 
     @NotBlank
