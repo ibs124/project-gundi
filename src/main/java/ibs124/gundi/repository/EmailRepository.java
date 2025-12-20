@@ -12,6 +12,5 @@ public interface EmailRepository extends JpaRepository<Email, Long> {
 
     boolean existsByName(String email);
 
-    Optional<Email> findByNameAndPrimaryTrue(String name);
-
+    Optional<Email> findByNameAndPrimaryTrueAndVerifiedAtIsNotNull(String name);
 }
