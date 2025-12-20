@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ibs124.gundi.config.thymeleaf.TemplateConfig;
 import ibs124.gundi.mapper.UserMapper;
 import ibs124.gundi.model.api.RegisterRequest;
-import ibs124.gundi.service.auth.RegisterService;
+import ibs124.gundi.service.auth.RegistrationService;
 import ibs124.gundi.util.RouteUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -26,10 +26,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping(REGISTER)
 public class RegisterController {
 
-    private final RegisterService registerService;
+    private final RegistrationService registerService;
     private final UserMapper userMapper;
 
-    public RegisterController(RegisterService registerService, UserMapper userMapper) {
+    public RegisterController(RegistrationService registerService, UserMapper userMapper) {
         this.registerService = registerService;
         this.userMapper = userMapper;
     }

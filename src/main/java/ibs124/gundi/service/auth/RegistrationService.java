@@ -3,7 +3,7 @@ package ibs124.gundi.service.auth;
 import ibs124.gundi.model.dto.RegisterDTO;
 import ibs124.gundi.model.dto.RegisterResponseDTO;
 
-public interface RegisterService {
+public interface RegistrationService {
 
    RegisterResponseDTO register(RegisterDTO dto, String appUrl);
    

@@ -13,14 +13,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "verification_tokens")
-public class VerificationToken extends AbstractEntity {
+@Table(name = "auth_tokens")
+public class AuthToken extends AbstractEntity {
 
     private User user;
     private String value;
     private Instant expiresAt;
 
-    public VerificationToken() {
+    public AuthToken() {
         super();
     }
 

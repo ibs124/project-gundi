@@ -11,17 +11,17 @@ import ibs124.gundi.model.dto.RegisterResponseDTO;
 import jakarta.transaction.Transactional;
 
 @Service
-class RegisterServiceImpl implements RegisterService {
+class RegistrationServiceImpl implements RegistrationService {
 
     private final UserCreatingService userCreatingService;
     private final EmailCreatingService emailCreatingService;
-    private final VerificationTokenCreatingService tokenCreatingService;
+    private final AuthTokenCreatingService tokenCreatingService;
     private final ApplicationEventPublisher eventPublisher;
 
-    public RegisterServiceImpl(
+    public RegistrationServiceImpl(
             UserCreatingService userCreatingService,
             EmailCreatingService emailCreatingService,
-            VerificationTokenCreatingService tokenCreatingService,
+            AuthTokenCreatingService tokenCreatingService,
             ApplicationEventPublisher eventPublisher) {
         this.userCreatingService = userCreatingService;
         this.emailCreatingService = emailCreatingService;
