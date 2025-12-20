@@ -2,22 +2,22 @@ package ibs124.gundi.model.domain;
 
 import java.time.Instant;
 
-import ibs124.gundi.config.JpaConfig;
 import ibs124.gundi.validation.constraint.ValidEmail;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
-@Table(name = "emails")
+@Table(name = "emails", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "is_primary" }))
 public class Email extends AbstractEntity {
 
     private User user;
     private String name;
     private Instant verifiedAt;
-    private boolean primary;
+    private Boolean primary;
 
     public Email() {
         super();
@@ -51,12 +51,12 @@ public class Email extends AbstractEntity {
         this.verifiedAt = verifiedAt;
     }
 
-    @Column(name = "is_primary", nullable = false, columnDefinition = JpaConfig.COLUMN_BOOLEAN)
-    public boolean isPrimary() {
-        return primary;
+    @Column(name = "is_primary")
+    public Boolean isPrimary() {
+        return this.primary == null ? false : this.primary;
     }
 
-    public void setPrimary(boolean primary) {
+    public void setPrimary(Boolean primary) {
         this.primary = primary;
     }
 
