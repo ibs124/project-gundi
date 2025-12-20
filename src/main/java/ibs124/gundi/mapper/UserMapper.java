@@ -13,8 +13,6 @@ public interface UserMapper {
 
     UserDTO toServiceModel(User src);
 
-    User toDomainModel(RegisterDTO src);
-
     UserDetailsDTO toSecurityModel(User src);
 
     User toDomainModel(UserCreateDTO dto);
