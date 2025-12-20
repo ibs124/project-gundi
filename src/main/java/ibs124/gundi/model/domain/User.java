@@ -19,7 +19,7 @@ import jakarta.persistence.Transient;
 @Table(name = "users")
 public class User extends AbstractEntity {
 
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles;
     private String username;
     private String password;
     private String fullName;
@@ -27,18 +27,17 @@ public class User extends AbstractEntity {
 
     public User() {
         super();
+        this.setRoles(new HashSet<>());
     }
 
     @Transient
-    public Role removeRole(Role role) {
-        this.getRoles().remove(role);
-        return role;
+    public boolean add(Role x) {
+        return this.getRoles().add(x);
     }
 
     @Transient
-    public Role addRole(Role role) {
-        this.getRoles().add(role);
-        return role;
+    public boolean remove(Role x) {
+        return this.getRoles().remove(x);
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
