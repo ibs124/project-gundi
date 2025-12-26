@@ -35,7 +35,7 @@ class VerificationServiceImpl implements VerificationService {
                     .filter(x -> this.validator.validate(x).isEmpty())
                     .orElseThrow(() -> new IllegalStateException());
 
-            User user = token.getOwner();
+            User user = token.getUser();
 
             user.setEnabled(true);
 

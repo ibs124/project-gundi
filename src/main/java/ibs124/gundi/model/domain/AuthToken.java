@@ -4,8 +4,7 @@ import java.time.Instant;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Future;
@@ -16,7 +15,7 @@ import jakarta.validation.constraints.NotNull;
 @Table(name = "auth_tokens")
 public class AuthToken extends AbstractDomainModel {
 
-    private User owner;
+    private User user;
     private String value;
     private Instant expiresAt;
 
@@ -25,14 +24,13 @@ public class AuthToken extends AbstractDomainModel {
     }
 
     @Valid
-    @OneToOne(optional = false)
-    @MapsId
-    public User getOwner() {
-        return owner;
+    @ManyToOne
+    public User getUser() {
+        return user;
     }
 
-    public void setOwner(User user) {
-        this.owner = user;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @NotBlank
