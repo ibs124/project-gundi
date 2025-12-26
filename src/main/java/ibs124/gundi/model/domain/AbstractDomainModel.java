@@ -13,13 +13,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public abstract class AbstractEntity {
+public abstract class AbstractDomainModel {
 
     private Long id;
     private Instant createdAt;
     private Instant updatedAt;
 
-    public AbstractEntity() {
+    public AbstractDomainModel() {
         super();
     }
 

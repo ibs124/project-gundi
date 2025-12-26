@@ -12,7 +12,7 @@ import jakarta.validation.constraints.PastOrPresent;
 
 @Entity
 @Table(name = "emails", uniqueConstraints = @UniqueConstraint(columnNames = { "user_id", "is_primary" }))
-public class Email extends AbstractEntity {
+public class Email extends AbstractDomainModel {
 
     private User user;
     private String name;

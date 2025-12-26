@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role extends AbstractEntity {
+public class Role extends AbstractDomainModel {
 
     private RoleName name;
 

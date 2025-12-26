@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "auth_tokens")
-public class AuthToken extends AbstractEntity {
+public class AuthToken extends AbstractDomainModel {
 
     private User owner;
     private String value;
