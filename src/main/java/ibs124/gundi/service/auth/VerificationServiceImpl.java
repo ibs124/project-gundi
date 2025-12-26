@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import ibs124.gundi.exception.ResourceUpdatingException;
 import ibs124.gundi.model.domain.User;
-import ibs124.gundi.model.domain.AuthToken;
+import ibs124.gundi.model.domain.VerificationToken;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.AuthTokenRepository;
 import jakarta.validation.Validator;
@@ -30,7 +30,7 @@ class VerificationServiceImpl implements VerificationService {
     @Override
     public boolean verifyNewUserByToken(String request) {
         try {
-            AuthToken token = this.tokenRepository
+            VerificationToken token = this.tokenRepository
                     .findByValueAndExpiresAtBefore(request, Instant.now())
                     .filter(x -> this.validator.validate(x).isEmpty())
                     .orElseThrow(() -> new IllegalStateException());

@@ -14,14 +14,14 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 @NotBlank(message = MessageConfig.BLANK_FIELD)
-@Pattern(regexp = ValidationConfig.FULL_NAME_REGEX, message = MessageConfig.USER_FULL_NAME_ERROR)
+@Pattern(regexp = ValidationConfig.FULL_NAME_REGEX, message = MessageConfig.FULL_NAME_FORMAT_ERROR)
 @Documented
 @Target({ ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
 public @interface ValidFullName {
 
-    String message() default MessageConfig.USER_FULL_NAME_ERROR;
+    String message() default MessageConfig.FULL_NAME_FORMAT_ERROR;
 
     Class<?>[] groups() default {};
 

@@ -5,17 +5,17 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ibs124.gundi.model.domain.AuthToken;
+import ibs124.gundi.model.domain.VerificationToken;
 
 import java.time.Instant;
 
 @Repository
 public interface AuthTokenRepository
-        extends JpaRepository<AuthToken, Long> {
+        extends JpaRepository<VerificationToken, Long> {
 
-    Optional<AuthToken> findByOwnerId(long id);
+    Optional<VerificationToken> findByUserId(long id);
 
-    Optional<AuthToken> findByValueAndExpiresAtBefore(String value, Instant expiresAt);
+    Optional<VerificationToken> findByValueAndExpiresAtBefore(String value, Instant expiresAt);
 
     boolean existsByValue(String value);
 

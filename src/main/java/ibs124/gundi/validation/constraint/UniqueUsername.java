@@ -17,7 +17,7 @@ import jakarta.validation.Payload;
 @Constraint(validatedBy = { UniqueUsernameValidator.class })
 public @interface UniqueUsername {
 
-    String message() default MessageConfig.USER_USERNAME_TAKEN;
+    String message() default MessageConfig.USERNAME_TAKEN;
 
     Class<?>[] groups() default {};
 

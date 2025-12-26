@@ -10,7 +10,7 @@ import ibs124.gundi.config.PropertyConfig;
 import ibs124.gundi.exception.ResourceCreatingException;
 import ibs124.gundi.exception.ResourceReadingException;
 import ibs124.gundi.model.domain.User;
-import ibs124.gundi.model.domain.AuthToken;
+import ibs124.gundi.model.domain.VerificationToken;
 import ibs124.gundi.repository.UserRepository;
 import ibs124.gundi.repository.AuthTokenRepository;
 
@@ -31,7 +31,7 @@ class AuthTokenCreatingServiceImpl implements AuthTokenCreatingService {
     @Override
     public String createByUserId(long id) {
         try {
-            AuthToken token = new AuthToken();
+            VerificationToken token = new VerificationToken();
 
             token.setUser(this.getUser(id));
 
