@@ -12,16 +12,16 @@ import ibs124.gundi.exception.ResourceReadingException;
 import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.domain.VerificationToken;
 import ibs124.gundi.repository.UserRepository;
-import ibs124.gundi.repository.AuthTokenRepository;
+import ibs124.gundi.repository.VerificationTokenRepository;
 
 @Service
 class AuthTokenCreatingServiceImpl implements AuthTokenCreatingService {
 
-    private final AuthTokenRepository tokenRepository;
+    private final VerificationTokenRepository tokenRepository;
     private final UserRepository userRepository;
     private final PropertyConfig config;
 
-    public AuthTokenCreatingServiceImpl(AuthTokenRepository tokenRepository,
+    public AuthTokenCreatingServiceImpl(VerificationTokenRepository tokenRepository,
             UserRepository userRepository, PropertyConfig config) {
         this.tokenRepository = tokenRepository;
         this.userRepository = userRepository;
@@ -33,7 +33,7 @@ class AuthTokenCreatingServiceImpl implements AuthTokenCreatingService {
         try {
             VerificationToken token = new VerificationToken();
 
-            token.setUser(this.getUser(id));
+            token.setOwner(this.getUser(id));
 
             token.setExpiresAt(this.getExpiration());
 

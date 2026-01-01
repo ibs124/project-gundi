@@ -8,18 +8,18 @@ import ibs124.gundi.exception.ResourceUpdatingException;
 import ibs124.gundi.model.domain.User;
 import ibs124.gundi.model.domain.VerificationToken;
 import ibs124.gundi.repository.UserRepository;
-import ibs124.gundi.repository.AuthTokenRepository;
+import ibs124.gundi.repository.VerificationTokenRepository;
 import jakarta.validation.Validator;
 
 @Service
 class VerificationServiceImpl implements VerificationService {
 
-    private final AuthTokenRepository tokenRepository;
+    private final VerificationTokenRepository tokenRepository;
     private final UserRepository userRepository;
     private final Validator validator;
 
     public VerificationServiceImpl(
-            AuthTokenRepository tokenRepository,
+            VerificationTokenRepository tokenRepository,
             UserRepository userRepository,
             Validator validator) {
         this.tokenRepository = tokenRepository;
@@ -35,7 +35,7 @@ class VerificationServiceImpl implements VerificationService {
                     .filter(x -> this.validator.validate(x).isEmpty())
                     .orElseThrow(() -> new IllegalStateException());
 
-            User user = token.getUser();
+            User user = token.getOwner();
 
             user.setEnabled(true);
 
