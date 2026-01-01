@@ -17,7 +17,7 @@ import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "users")
-public class User extends AbstractDomainModel {
+public class User extends AbstractAuditableDomainModel {
 
     private Set<Role> roles;
     private String username;
